@@ -3,3 +3,4 @@ venv/
 __pycache__/
 *.pyc
 docs/data/raw/
+!docs/data/raw/tiktok_*.json
