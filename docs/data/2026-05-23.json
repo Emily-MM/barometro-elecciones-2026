@@ -5,13 +5,14 @@
       "mentions": {
         "youtube": 76,
         "reddit": 428,
-        "total": 504
+        "tiktok": 583,
+        "total": 1087
       },
       "sentiment": {
-        "positive": 7.6,
-        "neutral": 27.76,
-        "negative": 64.65,
-        "count": 276
+        "positive": 19.15,
+        "neutral": 35.75,
+        "negative": 45.1,
+        "count": 476
       },
       "sentiment_by_source": {
         "youtube": {
@@ -24,6 +25,12 @@
           "positive": 5.97,
           "neutral": 28.46,
           "negative": 65.57,
+          "count": 200
+        },
+        "tiktok": {
+          "positive": 35.09,
+          "neutral": 46.79,
+          "negative": 18.12,
           "count": 200
         }
       },
@@ -110,13 +117,14 @@
       "mentions": {
         "youtube": 137,
         "reddit": 427,
-        "total": 564
+        "tiktok": 302,
+        "total": 866
       },
       "sentiment": {
-        "positive": 10.38,
-        "neutral": 29.03,
-        "negative": 60.59,
-        "count": 337
+        "positive": 15.43,
+        "neutral": 34.68,
+        "negative": 49.89,
+        "count": 537
       },
       "sentiment_by_source": {
         "youtube": {
@@ -129,6 +137,12 @@
           "positive": 6.29,
           "neutral": 29.33,
           "negative": 64.38,
+          "count": 200
+        },
+        "tiktok": {
+          "positive": 23.93,
+          "neutral": 44.19,
+          "negative": 31.87,
           "count": 200
         }
       },

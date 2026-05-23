@@ -1,12 +1,3 @@
-"""
-analyze_sentiment.py
-Barómetro Digital 2026
-
-Lee los textos de youtube_YYYY-MM-DD.json y reddit_YYYY-MM-DD.json,
-corre pysentimiento (robertuito) sobre cada texto y guarda los scores
-en data/raw/sentiment_YYYY-MM-DD.json
-"""
-
 import json
 import os
 from datetime import date
@@ -17,17 +8,19 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-TODAY = date.today().isoformat()          
+TODAY = date.today().isoformat()
 DATA_DIR = Path("docs/data/raw")
 
 YOUTUBE_FILE  = DATA_DIR / f"youtube_{TODAY}.json"
 REDDIT_FILE   = DATA_DIR / f"reddit_{TODAY}.json"
+TIKTOK_FILE   = DATA_DIR / f"tiktok_{TODAY}.json"
 OUTPUT_FILE   = DATA_DIR / f"sentiment_{TODAY}.json"
 
-MAX_TEXTS     = 200   
-MAX_CHARS     = 512   
+MAX_TEXTS = 200
+MAX_CHARS = 512
 
-CANDIDATES    = ["keiko_fujimori", "roberto_sanchez"]
+CANDIDATES = ["keiko_fujimori", "roberto_sanchez"]
+
 
 def load_json(path: Path) -> dict:
     if not path.exists():
@@ -38,35 +31,29 @@ def load_json(path: Path) -> dict:
 
 
 def truncate(text: str) -> str:
-    """Trunca el texto al límite del modelo."""
     return text[:MAX_CHARS]
 
 
 def get_texts_youtube(data: dict, candidate: str) -> list[str]:
-    """Extrae comentarios de YouTube para un candidato."""
-    candidate_data = data.get(candidate, {})
-    comments = candidate_data.get("comments", [])
+    comments = data.get(candidate, {}).get("comments", [])
     return [truncate(c) for c in comments if isinstance(c, str) and c.strip()]
 
 
 def get_texts_reddit(data: dict, candidate: str) -> list[str]:
-    """Extrae textos de Reddit para un candidato."""
-    candidate_data = data.get(candidate, {})
-    texts = candidate_data.get("texts", [])
+    texts = data.get(candidate, {}).get("texts", [])
+    return [truncate(t) for t in texts if isinstance(t, str) and t.strip()]
+
+
+def get_texts_tiktok(data: dict, candidate: str) -> list[str]:
+    texts = data.get(candidate, {}).get("texts", [])
     return [truncate(t) for t in texts if isinstance(t, str) and t.strip()]
 
 
 def analyze_texts(analyzer, texts: list[str]) -> dict:
-    """
-    Corre el modelo sobre una lista de textos (ya truncados).
-    Devuelve scores promedio POS/NEU/NEG como porcentajes (0–100).
-    """
     if not texts:
         return {"positive": 0.0, "neutral": 0.0, "negative": 0.0, "count": 0}
 
-    # Limitar cantidad
     sample = texts[:MAX_TEXTS]
-
     pos_total = neu_total = neg_total = 0.0
 
     for text in sample:
@@ -87,6 +74,19 @@ def analyze_texts(analyzer, texts: list[str]) -> dict:
         "count":    n,
     }
 
+
+def weighted_combined(sources: list[dict]) -> dict:
+    total_n = sum(s["count"] for s in sources)
+    if total_n == 0:
+        return {"positive": 0.0, "neutral": 0.0, "negative": 0.0, "count": 0}
+    return {
+        "positive": round(sum(s["positive"] * s["count"] for s in sources) / total_n, 2),
+        "neutral":  round(sum(s["neutral"]  * s["count"] for s in sources) / total_n, 2),
+        "negative": round(sum(s["negative"] * s["count"] for s in sources) / total_n, 2),
+        "count":    total_n,
+    }
+
+
 def main():
     print(f"[INFO] Fecha: {TODAY}")
     print("[INFO] Cargando modelo pysentimiento (robertuito)...")
@@ -95,6 +95,10 @@ def main():
 
     youtube_data = load_json(YOUTUBE_FILE)
     reddit_data  = load_json(REDDIT_FILE)
+    tiktok_data  = load_json(TIKTOK_FILE)
+
+    has_tiktok = bool(tiktok_data)
+    print(f"[INFO] TikTok: {'encontrado' if has_tiktok else 'no disponible hoy'}")
 
     output = {"date": TODAY, "candidates": {}}
 
@@ -103,33 +107,33 @@ def main():
 
         yt_texts     = get_texts_youtube(youtube_data, candidate)
         reddit_texts = get_texts_reddit(reddit_data, candidate)
+        tiktok_texts = get_texts_tiktok(tiktok_data, candidate) if has_tiktok else []
 
         print(f"  YouTube : {len(yt_texts)} textos")
         print(f"  Reddit  : {len(reddit_texts)} textos")
+        print(f"  TikTok  : {len(tiktok_texts)} textos")
 
         print("  Analizando YouTube...")
-        yt_sentiment = analyze_texts(analyzer, yt_texts)
+        yt_sent = analyze_texts(analyzer, yt_texts)
 
         print("  Analizando Reddit...")
-        reddit_sentiment = analyze_texts(analyzer, reddit_texts)
+        reddit_sent = analyze_texts(analyzer, reddit_texts)
 
-        yt_n     = yt_sentiment["count"]
-        reddit_n = reddit_sentiment["count"]
-        total_n  = yt_n + reddit_n
+        tiktok_sent = {"positive": 0.0, "neutral": 0.0, "negative": 0.0, "count": 0}
+        if tiktok_texts:
+            print("  Analizando TikTok...")
+            tiktok_sent = analyze_texts(analyzer, tiktok_texts)
 
-        if total_n > 0:
-            combined = {
-                "positive": round((yt_sentiment["positive"] * yt_n + reddit_sentiment["positive"] * reddit_n) / total_n, 2),
-                "neutral":  round((yt_sentiment["neutral"]  * yt_n + reddit_sentiment["neutral"]  * reddit_n) / total_n, 2),
-                "negative": round((yt_sentiment["negative"] * yt_n + reddit_sentiment["negative"] * reddit_n) / total_n, 2),
-                "count":    total_n,
-            }
-        else:
-            combined = {"positive": 0.0, "neutral": 0.0, "negative": 0.0, "count": 0}
+        sources = [yt_sent, reddit_sent]
+        if tiktok_sent["count"] > 0:
+            sources.append(tiktok_sent)
+
+        combined = weighted_combined(sources)
 
         output["candidates"][candidate] = {
-            "youtube":  yt_sentiment,
-            "reddit":   reddit_sentiment,
+            "youtube":  yt_sent,
+            "reddit":   reddit_sent,
+            "tiktok":   tiktok_sent,
             "combined": combined,
         }
 

@@ -1,26 +1,20 @@
-"""
-merge_daily.py
-Barómetro Digital 2026
-
-Combina los 4 JSONs raw del día en un único archivo data/YYYY-MM-DD.json
-con el schema final que consume el frontend.
-"""
-
 import json
 from datetime import date
 from pathlib import Path
 
-TODAY    = date.today().isoformat()  
-RAW_DIR  = Path("docs/data")
-OUT_DIR  = Path("docs/data/raw")
+TODAY   = date.today().isoformat()
+RAW_DIR = Path("docs/data/raw")
+OUT_DIR = Path("docs/data")
 
 YOUTUBE_FILE   = RAW_DIR / f"youtube_{TODAY}.json"
 REDDIT_FILE    = RAW_DIR / f"reddit_{TODAY}.json"
 TRENDS_FILE    = RAW_DIR / f"trends_{TODAY}.json"
+TIKTOK_FILE    = RAW_DIR / f"tiktok_{TODAY}.json"
 SENTIMENT_FILE = RAW_DIR / f"sentiment_{TODAY}.json"
 OUTPUT_FILE    = OUT_DIR / f"{TODAY}.json"
 
 CANDIDATES = ["keiko_fujimori", "roberto_sanchez"]
+
 
 def load_json(path: Path) -> dict:
     if not path.exists():
@@ -35,6 +29,7 @@ def empty_candidate() -> dict:
         "mentions": {
             "youtube": 0,
             "reddit":  0,
+            "tiktok":  0,
             "total":   0,
         },
         "sentiment": {
@@ -46,33 +41,36 @@ def empty_candidate() -> dict:
         "sentiment_by_source": {
             "youtube": {"positive": 0.0, "neutral": 0.0, "negative": 0.0, "count": 0},
             "reddit":  {"positive": 0.0, "neutral": 0.0, "negative": 0.0, "count": 0},
+            "tiktok":  {"positive": 0.0, "neutral": 0.0, "negative": 0.0, "count": 0},
         },
-        "trends_index":  0,
-        "trends_series": [],
-        "trends_dates":  [],
-        "top_queries":   [],
+        "trends_index":   0,
+        "trends_series":  [],
+        "trends_dates":   [],
+        "top_queries":    [],
         "rising_queries": [],
     }
 
-def merge(youtube: dict, reddit: dict, trends: dict, sentiment: dict) -> dict:
+
+def merge(youtube: dict, reddit: dict, trends: dict, tiktok: dict, sentiment: dict) -> dict:
     output = {"date": TODAY, "candidates": {}}
 
     for candidate in CANDIDATES:
         data = empty_candidate()
 
-        #YouTube
         yt = youtube.get(candidate, {})
         yt_count = yt.get("count", 0)
         data["mentions"]["youtube"] = yt_count
 
-        #Reddit
         rd = reddit.get(candidate, {})
         rd_count = rd.get("text_count", rd.get("count", 0))
         data["mentions"]["reddit"] = rd_count
 
-        data["mentions"]["total"] = yt_count + rd_count
+        tk = tiktok.get(candidate, {})
+        tk_count = tk.get("text_count", tk.get("count", 0))
+        data["mentions"]["tiktok"] = tk_count
 
-        #Sentimiento
+        data["mentions"]["total"] = yt_count + rd_count + tk_count
+
         sent = sentiment.get("candidates", {}).get(candidate, {})
         if sent:
             combined = sent.get("combined", {})
@@ -84,8 +82,8 @@ def merge(youtube: dict, reddit: dict, trends: dict, sentiment: dict) -> dict:
             }
             data["sentiment_by_source"]["youtube"] = sent.get("youtube", data["sentiment_by_source"]["youtube"])
             data["sentiment_by_source"]["reddit"]  = sent.get("reddit",  data["sentiment_by_source"]["reddit"])
+            data["sentiment_by_source"]["tiktok"]  = sent.get("tiktok",  data["sentiment_by_source"]["tiktok"])
 
-        #Google Trends
         tr = trends.get(candidate, {})
         if tr:
             data["trends_index"]   = tr.get("current", 0)
@@ -95,7 +93,9 @@ def merge(youtube: dict, reddit: dict, trends: dict, sentiment: dict) -> dict:
             data["rising_queries"] = tr.get("rising_queries", [])
 
         output["candidates"][candidate] = data
-        print(f"[OK] {candidate}: menciones={data['mentions']['total']} | trends={data['trends_index']} | sentiment_count={data['sentiment']['count']}")
+
+        tk_str = f" | tiktok={tk_count}" if tk_count else ""
+        print(f"[OK] {candidate}: menciones={data['mentions']['total']}{tk_str} | trends={data['trends_index']} | sentiment_count={data['sentiment']['count']}")
 
     return output
 
@@ -106,9 +106,10 @@ def main():
     youtube   = load_json(YOUTUBE_FILE)
     reddit    = load_json(REDDIT_FILE)
     trends    = load_json(TRENDS_FILE)
+    tiktok    = load_json(TIKTOK_FILE)
     sentiment = load_json(SENTIMENT_FILE)
 
-    result = merge(youtube, reddit, trends, sentiment)
+    result = merge(youtube, reddit, trends, tiktok, sentiment)
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:

@@ -72,8 +72,8 @@ def main():
             "count": len(comments)
         }
 
-    os.makedirs("data/raw", exist_ok=True)
-    filepath = f"data/raw/youtube_{today}.json"
+    os.makedirs("docs/data/raw", exist_ok=True)
+    filepath = f"docs/data/raw/youtube_{today}.json"
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
