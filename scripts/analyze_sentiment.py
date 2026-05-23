@@ -18,7 +18,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 TODAY = date.today().isoformat()          
-DATA_DIR = Path("data/raw")
+DATA_DIR = Path("docs/data/raw")
 
 YOUTUBE_FILE  = DATA_DIR / f"youtube_{TODAY}.json"
 REDDIT_FILE   = DATA_DIR / f"reddit_{TODAY}.json"

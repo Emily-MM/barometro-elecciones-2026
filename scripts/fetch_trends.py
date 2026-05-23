@@ -62,8 +62,8 @@ def main():
     print("Fetching Google Trends...")
     trends = fetch_trends()
 
-    os.makedirs("data/raw", exist_ok=True)
-    filepath = f"data/raw/trends_{today}.json"
+    os.makedirs("docs/data/raw", exist_ok=True)
+    filepath = f"docs/data/raw/trends_{today}.json"
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(trends, f, ensure_ascii=False, indent=2)
 

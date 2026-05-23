@@ -1,0 +1,45 @@
+{
+  "date": "2026-05-22",
+  "candidates": {
+    "keiko_fujimori": {
+      "youtube": {
+        "positive": 10.53,
+        "neutral": 24.87,
+        "negative": 64.6,
+        "count": 28
+      },
+      "reddit": {
+        "positive": 5.97,
+        "neutral": 28.46,
+        "negative": 65.57,
+        "count": 200
+      },
+      "combined": {
+        "positive": 6.53,
+        "neutral": 28.02,
+        "negative": 65.45,
+        "count": 228
+      }
+    },
+    "roberto_sanchez": {
+      "youtube": {
+        "positive": 4.1,
+        "neutral": 18.89,
+        "negative": 77.01,
+        "count": 17
+      },
+      "reddit": {
+        "positive": 6.29,
+        "neutral": 29.33,
+        "negative": 64.38,
+        "count": 200
+      },
+      "combined": {
+        "positive": 6.12,
+        "neutral": 28.51,
+        "negative": 65.37,
+        "count": 217
+      }
+    }
+  }
+}

@@ -11,8 +11,8 @@ from datetime import date
 from pathlib import Path
 
 TODAY    = date.today().isoformat()  
-RAW_DIR  = Path("data/raw")
-OUT_DIR  = Path("data")
+RAW_DIR  = Path("docs/data")
+OUT_DIR  = Path("docs/data/raw")
 
 YOUTUBE_FILE   = RAW_DIR / f"youtube_{TODAY}.json"
 REDDIT_FILE    = RAW_DIR / f"reddit_{TODAY}.json"
