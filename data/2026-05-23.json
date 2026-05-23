@@ -1,0 +1,218 @@
+{
+  "date": "2026-05-23",
+  "candidates": {
+    "keiko_fujimori": {
+      "mentions": {
+        "youtube": 76,
+        "reddit": 428,
+        "total": 504
+      },
+      "sentiment": {
+        "positive": 7.6,
+        "neutral": 27.76,
+        "negative": 64.65,
+        "count": 276
+      },
+      "sentiment_by_source": {
+        "youtube": {
+          "positive": 11.88,
+          "neutral": 25.9,
+          "negative": 62.23,
+          "count": 76
+        },
+        "reddit": {
+          "positive": 5.97,
+          "neutral": 28.46,
+          "negative": 65.57,
+          "count": 200
+        }
+      },
+      "trends_index": 48,
+      "trends_series": [
+        64,
+        60,
+        33,
+        46,
+        35,
+        48,
+        36,
+        59,
+        56,
+        41,
+        45,
+        37,
+        44,
+        51,
+        61,
+        41,
+        26,
+        30,
+        32,
+        25,
+        32,
+        32,
+        55,
+        46,
+        63,
+        62,
+        52,
+        77,
+        100,
+        63,
+        48
+      ],
+      "trends_dates": [
+        "2026-04-23",
+        "2026-04-24",
+        "2026-04-25",
+        "2026-04-26",
+        "2026-04-27",
+        "2026-04-28",
+        "2026-04-29",
+        "2026-04-30",
+        "2026-05-01",
+        "2026-05-02",
+        "2026-05-03",
+        "2026-05-04",
+        "2026-05-05",
+        "2026-05-06",
+        "2026-05-07",
+        "2026-05-08",
+        "2026-05-09",
+        "2026-05-10",
+        "2026-05-11",
+        "2026-05-12",
+        "2026-05-13",
+        "2026-05-14",
+        "2026-05-15",
+        "2026-05-16",
+        "2026-05-17",
+        "2026-05-18",
+        "2026-05-19",
+        "2026-05-20",
+        "2026-05-21",
+        "2026-05-22",
+        "2026-05-23"
+      ],
+      "top_queries": [
+        "roberto sánchez",
+        "roberto sanchez",
+        "edad keiko fujimori",
+        "keiko fujimori propuestas",
+        "alberto fujimori"
+      ],
+      "rising_queries": [
+        "roberto sánchez",
+        "donde nacio keiko fujimori"
+      ]
+    },
+    "roberto_sanchez": {
+      "mentions": {
+        "youtube": 137,
+        "reddit": 427,
+        "total": 564
+      },
+      "sentiment": {
+        "positive": 10.38,
+        "neutral": 29.03,
+        "negative": 60.59,
+        "count": 337
+      },
+      "sentiment_by_source": {
+        "youtube": {
+          "positive": 16.35,
+          "neutral": 28.6,
+          "negative": 55.05,
+          "count": 137
+        },
+        "reddit": {
+          "positive": 6.29,
+          "neutral": 29.33,
+          "negative": 64.38,
+          "count": 200
+        }
+      },
+      "trends_index": 40,
+      "trends_series": [
+        51,
+        40,
+        40,
+        32,
+        43,
+        56,
+        52,
+        38,
+        47,
+        28,
+        29,
+        26,
+        28,
+        14,
+        28,
+        21,
+        27,
+        26,
+        35,
+        55,
+        89,
+        41,
+        53,
+        42,
+        48,
+        61,
+        49,
+        47,
+        42,
+        46,
+        40
+      ],
+      "trends_dates": [
+        "2026-04-23",
+        "2026-04-24",
+        "2026-04-25",
+        "2026-04-26",
+        "2026-04-27",
+        "2026-04-28",
+        "2026-04-29",
+        "2026-04-30",
+        "2026-05-01",
+        "2026-05-02",
+        "2026-05-03",
+        "2026-05-04",
+        "2026-05-05",
+        "2026-05-06",
+        "2026-05-07",
+        "2026-05-08",
+        "2026-05-09",
+        "2026-05-10",
+        "2026-05-11",
+        "2026-05-12",
+        "2026-05-13",
+        "2026-05-14",
+        "2026-05-15",
+        "2026-05-16",
+        "2026-05-17",
+        "2026-05-18",
+        "2026-05-19",
+        "2026-05-20",
+        "2026-05-21",
+        "2026-05-22",
+        "2026-05-23"
+      ],
+      "top_queries": [
+        "roberto sanchez peru",
+        "candidato roberto sanchez",
+        "roberto sanchez palomino",
+        "roberto sanchez jp",
+        "jp"
+      ],
+      "rising_queries": [
+        "pedro francke",
+        "quien es el vicepresidente de roberto sanchez",
+        "keiko fujimori",
+        "pedro sanchez",
+        "segunda vuelta"
+      ]
+    }
+  }
+}

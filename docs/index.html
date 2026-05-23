@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barómetro Digital 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0a0a0f;
+    --surface:   #111118;
+    --border:    #1e1e2e;
+    --keiko:     #f5a623;
+    --sanchez:   #4fc3f7;
+    --keiko-dim: rgba(245,166,35,0.12);
+    --sanchez-dim: rgba(79,195,247,0.12);
+    --text:      #e8e8f0;
+    --muted:     #5a5a72;
+    --accent:    #ff4d6d;
+    --positive:  #4ade80;
+    --neutral:   #94a3b8;
+    --negative:  #f87171;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Grid noise background ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Header ── */
+  header {
+    position: relative;
+    z-index: 1;
+    padding: 48px 48px 32px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .header-left h1 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .header-left h1 span {
+    color: var(--accent);
+  }
+
+  .header-left p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+  #last-update {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .live-dot {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--positive);
+  }
+
+  .live-dot::before {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--positive);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  /* ── Key dates banner ── */
+  .dates-banner {
+    position: relative; z-index: 1;
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .date-item {
+    flex: 1;
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-right: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+  }
+
+  .date-item:last-child { border-right: none; }
+
+  .date-label {
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.82rem;
+  }
+
+  .date-value {
+    color: var(--text);
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .date-countdown {
+    margin-left: auto;
+    background: var(--border);
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* ── Main layout ── */
+  main {
+    position: relative; z-index: 1;
+    padding: 40px 48px;
+    display: grid;
+    gap: 24px;
+  }
+
+  /* ── Candidate cards ── */
+  .cards-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .candidate-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .candidate-card.keiko  { border-top: 3px solid var(--keiko); }
+  .candidate-card.sanchez { border-top: 3px solid var(--sanchez); }
+
+  .candidate-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 120px;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+
+  .candidate-card.keiko::before  { background: var(--keiko); }
+  .candidate-card.sanchez::before { background: var(--sanchez); }
+
+  .card-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .card-party {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 32px;
+  }
+
+  .card-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .stat-block {}
+
+  .stat-value {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .candidate-card.keiko  .stat-value { color: var(--keiko); }
+  .candidate-card.sanchez .stat-value { color: var(--sanchez); }
+
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .trends-mini-wrap {
+    margin-top: 28px;
+    height: 56px;
+    position: relative;
+    width: 100%;
+  }
+
+  .trends-mini {
+    position: absolute;
+    inset: 0;
+    opacity: 0.7;
+  }
+
+  /* ── Chart panels ── */
+  .chart-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 28px;
+  }
+
+  .chart-panel.half {
+    /* used in grid */
+  }
+
+  .panel-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .panel-title {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+
+  .panel-legend {
+    display: flex;
+    gap: 24px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .legend-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .chart-wrap {
+    position: relative;
+  }
+
+  /* ── Two column grid ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* ── Sentiment bars ── */
+  .sentiment-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .sentiment-candidate {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .sentiment-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .sent-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .sent-bar-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+    width: 62px;
+    flex-shrink: 0;
+  }
+
+  .sent-bar-track {
+    flex: 1;
+    height: 10px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .sent-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 1s ease;
+    width: 0%;
+  }
+
+  .sent-bar-fill.pos { background: var(--positive); }
+  .sent-bar-fill.neu { background: var(--neutral); }
+  .sent-bar-fill.neg { background: var(--negative); }
+
+  .sent-bar-pct {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text);
+    width: 44px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .no-sentiment {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    padding: 16px 0;
+  }
+
+  /* ── Queries list ── */
+  .queries-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .queries-col h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .query-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95rem;
+  }
+
+  .query-item:last-child { border-bottom: none; }
+
+  .query-rank {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+    width: 16px;
+    flex-shrink: 0;
+  }
+
+  /* ── Loading / error ── */
+  #loading {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    z-index: 100;
+  }
+
+  #loading p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .spinner {
+    width: 32px; height: 32px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── Footer ── */
+  footer {
+    position: relative; z-index: 1;
+    padding: 24px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  footer p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    header, main, footer { padding: 24px 20px; }
+    .cards-row, .two-col, .sentiment-row, .queries-grid { grid-template-columns: 1fr; }
+    .dates-banner { flex-direction: column; }
+    .date-item { border-right: none; border-bottom: 1px solid var(--border); }
+  }
+
+  /* ── Fade-in animation ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in:nth-child(1) { animation-delay: 0.05s; }
+  .fade-in:nth-child(2) { animation-delay: 0.10s; }
+  .fade-in:nth-child(3) { animation-delay: 0.15s; }
+  .fade-in:nth-child(4) { animation-delay: 0.20s; }
+  .fade-in:nth-child(5) { animation-delay: 0.25s; }
+</style>
+</head>
+<body>
+
+<div id="loading">
+  <div class="spinner"></div>
+  <p>Cargando datos...</p>
+</div>
+
+<header>
+  <div class="header-left">
+    <h1>Barómetro<span>.</span>Digital <span>2026</span></h1>
+    <p>Perú · Segunda Vuelta · Análisis de conversación pública</p>
+  </div>
+  <div class="header-right">
+    <div class="live-dot">Actualización diaria</div>
+    <div id="last-update">—</div>
+  </div>
+</header>
+
+<div class="dates-banner">
+  <div class="date-item">
+    <span class="date-label">Debate</span>
+    <span class="date-value">31 mayo 2026</span>
+    <span class="date-countdown" id="countdown-debate">—</span>
+  </div>
+  <div class="date-item">
+    <span class="date-label">Segunda Vuelta</span>
+    <span class="date-value">7 junio 2026</span>
+    <span class="date-countdown" id="countdown-election">—</span>
+  </div>
+  <div class="date-item">
+    <span class="date-label">Fuentes</span>
+    <span class="date-value">YouTube · Reddit · Google Trends</span>
+  </div>
+</div>
+
+<main>
+
+  <!-- Candidate cards -->
+  <div class="cards-row">
+    <div class="candidate-card keiko fade-in" id="card-keiko">
+      <div class="card-name">Keiko Fujimori</div>
+      <div class="card-party">Fuerza Popular</div>
+      <div class="card-stats">
+        <div class="stat-block">
+          <div class="stat-value" id="keiko-mentions">—</div>
+          <div class="stat-label">Menciones hoy</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-value" id="keiko-trends">—</div>
+          <div class="stat-label">Trends index</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-value" id="keiko-pos">—</div>
+          <div class="stat-label">% positivo</div>
+        </div>
+      </div>
+      <div class="trends-mini-wrap"><canvas class="trends-mini" id="mini-keiko"></canvas></div>
+    </div>
+
+    <div class="candidate-card sanchez fade-in" id="card-sanchez">
+      <div class="card-name">Roberto Sánchez</div>
+      <div class="card-party">Juntos por el Perú</div>
+      <div class="card-stats">
+        <div class="stat-block">
+          <div class="stat-value" id="sanchez-mentions">—</div>
+          <div class="stat-label">Menciones hoy</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-value" id="sanchez-trends">—</div>
+          <div class="stat-label">Trends index</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-value" id="sanchez-pos">—</div>
+          <div class="stat-label">% positivo</div>
+        </div>
+      </div>
+      <div class="trends-mini-wrap"><canvas class="trends-mini" id="mini-sanchez"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Google Trends timeline -->
+  <div class="chart-panel fade-in">
+    <div class="panel-header">
+      <span class="panel-title">Google Trends — Últimos 30 días</span>
+      <div class="panel-legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--keiko)"></div>Keiko</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--sanchez)"></div>Sánchez</div>
+      </div>
+    </div>
+    <div class="chart-wrap" style="height:200px">
+      <canvas id="chart-trends"></canvas>
+    </div>
+  </div>
+
+  <!-- Menciones diarias + Sentimiento -->
+  <div class="two-col">
+
+    <div class="chart-panel fade-in">
+      <div class="panel-header">
+        <span class="panel-title">Menciones diarias</span>
+        <div class="panel-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--keiko)"></div>Keiko</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--sanchez)"></div>Sánchez</div>
+        </div>
+      </div>
+      <div class="chart-wrap" style="height:180px">
+        <canvas id="chart-mentions"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-panel fade-in">
+      <div class="panel-header">
+        <span class="panel-title">Sentimiento — hoy</span>
+      </div>
+      <div class="sentiment-row" id="sentiment-container">
+        <div class="no-sentiment">Corre analyze_sentiment.py para ver datos aquí.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Top queries -->
+  <div class="chart-panel fade-in">
+    <div class="panel-header">
+      <span class="panel-title">Top búsquedas en Google</span>
+    </div>
+    <div class="queries-grid">
+      <div class="queries-col">
+        <h4 style="color:var(--keiko)">Keiko Fujimori</h4>
+        <div id="queries-keiko"></div>
+      </div>
+      <div class="queries-col">
+        <h4 style="color:var(--sanchez)">Roberto Sánchez</h4>
+        <div id="queries-sanchez"></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>Barómetro Digital 2026 · Datos: YouTube, Reddit, Google Trends · Sentimiento: pysentimiento/robertuito</p>
+  <p id="footer-date">—</p>
+</footer>
+
+<script>
+// ── Config ────────────────────────────────────────────────────────────────────
+
+// Base URL de los JSONs en GitHub Pages
+// Cuando esté en producción: './data/' si docs/ está en la raíz del repo
+// Durante desarrollo local: ajustar según tu estructura
+const DATA_BASE = '../data/';
+
+const KEIKO_COLOR   = '#f5a623';
+const SANCHEZ_COLOR = '#4fc3f7';
+const GRID_COLOR    = 'rgba(255,255,255,0.04)';
+const TEXT_COLOR    = '#5a5a72';
+
+Chart.defaults.color = TEXT_COLOR;
+Chart.defaults.font.family = "'JetBrains Mono', monospace";
+Chart.defaults.font.size = 13;
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
+function daysUntil(dateStr) {
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const target = new Date(dateStr);
+  const diff = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
+  if (diff < 0) return 'Pasado';
+  if (diff === 0) return '¡Hoy!';
+  return `${diff}d`;
+}
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00');
+  return d.toLocaleDateString('es-PE', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+function shortDate(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00');
+  return d.toLocaleDateString('es-PE', { day: 'numeric', month: 'short' });
+}
+
+// Genera lista de fechas entre start y end (inclusive)
+function dateRange(start, end) {
+  const dates = [];
+  const cur = new Date(start + 'T00:00:00');
+  const last = new Date(end + 'T00:00:00');
+  while (cur <= last) {
+    dates.push(cur.toISOString().slice(0,10));
+    cur.setDate(cur.getDate() + 1);
+  }
+  return dates;
+}
+
+// Genera nombre de archivo para cada fecha
+function dataUrl(date) {
+  return `${DATA_BASE}${date}.json`;
+}
+
+// Obtiene fecha de hoy en formato YYYY-MM-DD
+function todayStr() {
+  return new Date().toISOString().slice(0,10);
+}
+
+// ── Load data ─────────────────────────────────────────────────────────────────
+
+async function fetchDay(date) {
+  try {
+    const r = await fetch(dataUrl(date));
+    if (!r.ok) return null;
+    return await r.json();
+  } catch { return null; }
+}
+
+// Carga todos los JSONs disponibles desde una fecha de inicio hasta hoy
+async function loadAllDays(startDate) {
+  const dates = dateRange(startDate, todayStr());
+  const results = await Promise.all(dates.map(d => fetchDay(d)));
+  return dates
+    .map((d, i) => ({ date: d, data: results[i] }))
+    .filter(x => x.data !== null);
+}
+
+// ── Charts ────────────────────────────────────────────────────────────────────
+
+const baseOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
+  scales: {
+    x: { grid: { color: GRID_COLOR }, ticks: { maxTicksLimit: 7 } },
+    y: { grid: { color: GRID_COLOR }, beginAtZero: true }
+  }
+};
+
+function buildTrendsChart(days) {
+  // Usa la serie del día más reciente (ya tiene 30 días)
+  const latest = days[days.length - 1].data;
+  const keiko   = latest.candidates.keiko_fujimori;
+  const sanchez = latest.candidates.roberto_sanchez;
+
+  const labels = (keiko.trends_dates || []).map(shortDate);
+
+  new Chart(document.getElementById('chart-trends'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: 'Keiko',
+          data: keiko.trends_series || [],
+          borderColor: KEIKO_COLOR,
+          backgroundColor: 'rgba(245,166,35,0.06)',
+          borderWidth: 2,
+          pointRadius: 0,
+          fill: true,
+          tension: 0.4,
+        },
+        {
+          label: 'Sánchez',
+          data: sanchez.trends_series || [],
+          borderColor: SANCHEZ_COLOR,
+          backgroundColor: 'rgba(79,195,247,0.06)',
+          borderWidth: 2,
+          pointRadius: 0,
+          fill: true,
+          tension: 0.4,
+        }
+      ]
+    },
+    options: {
+      ...baseOptions,
+      scales: {
+        ...baseOptions.scales,
+        y: { ...baseOptions.scales.y, max: 100, ticks: { stepSize: 25 } }
+      },
+      // Marcadores de fechas clave
+      plugins: {
+        ...baseOptions.plugins,
+        annotation: undefined // Chart.js annotation plugin no cargado; se omite
+      }
+    }
+  });
+}
+
+function buildMentionsChart(days) {
+  const labels  = days.map(d => shortDate(d.date));
+  const keiko   = days.map(d => d.data.candidates.keiko_fujimori.mentions?.total || 0);
+  const sanchez = days.map(d => d.data.candidates.roberto_sanchez.mentions?.total || 0);
+
+  new Chart(document.getElementById('chart-mentions'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        { label: 'Keiko',   data: keiko,   backgroundColor: 'rgba(245,166,35,0.7)',  borderRadius: 2 },
+        { label: 'Sánchez', data: sanchez, backgroundColor: 'rgba(79,195,247,0.7)',  borderRadius: 2 }
+      ]
+    },
+    options: baseOptions
+  });
+}
+
+function buildMiniChart(canvasId, series, color) {
+  new Chart(document.getElementById(canvasId), {
+    type: 'line',
+    data: {
+      labels: series.map((_, i) => i),
+      datasets: [{
+        data: series,
+        borderColor: color,
+        borderWidth: 1.5,
+        pointRadius: 0,
+        fill: false,
+        tension: 0.4,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { enabled: false } },
+      scales: { x: { display: false }, y: { display: false } }
+    }
+  });
+}
+
+// ── Sentiment bars ────────────────────────────────────────────────────────────
+
+function renderSentiment(today) {
+  const container = document.getElementById('sentiment-container');
+  const keiko   = today.candidates.keiko_fujimori.sentiment;
+  const sanchez = today.candidates.roberto_sanchez.sentiment;
+
+  if (!keiko.count && !sanchez.count) {
+    container.innerHTML = '<div class="no-sentiment">Corre analyze_sentiment.py para ver datos aquí.</div>';
+    return;
+  }
+
+  function candidateHTML(name, color, data) {
+    return `
+      <div class="sentiment-candidate">
+        <div class="sentiment-name" style="color:${color}">${name}</div>
+        <div class="sent-bar-row">
+          <span class="sent-bar-label">Positivo</span>
+          <div class="sent-bar-track"><div class="sent-bar-fill pos" style="width:${data.positive}%"></div></div>
+          <span class="sent-bar-pct">${data.positive.toFixed(1)}%</span>
+        </div>
+        <div class="sent-bar-row">
+          <span class="sent-bar-label">Neutral</span>
+          <div class="sent-bar-track"><div class="sent-bar-fill neu" style="width:${data.neutral}%"></div></div>
+          <span class="sent-bar-pct">${data.neutral.toFixed(1)}%</span>
+        </div>
+        <div class="sent-bar-row">
+          <span class="sent-bar-label">Negativo</span>
+          <div class="sent-bar-track"><div class="sent-bar-fill neg" style="width:${data.negative}%"></div></div>
+          <span class="sent-bar-pct">${data.negative.toFixed(1)}%</span>
+        </div>
+        <div style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--muted)">${data.count} textos analizados</div>
+      </div>`;
+  }
+
+  container.innerHTML =
+    candidateHTML('Keiko Fujimori', KEIKO_COLOR, keiko) +
+    candidateHTML('Roberto Sánchez', SANCHEZ_COLOR, sanchez);
+}
+
+// ── Queries ───────────────────────────────────────────────────────────────────
+
+function renderQueries(today) {
+  function listHTML(queries) {
+    if (!queries || !queries.length) return '<div class="no-sentiment">Sin datos</div>';
+    return queries.slice(0, 5).map((q, i) =>
+      `<div class="query-item"><span class="query-rank">${i+1}</span>${q}</div>`
+    ).join('');
+  }
+  document.getElementById('queries-keiko').innerHTML =
+    listHTML(today.candidates.keiko_fujimori.top_queries);
+  document.getElementById('queries-sanchez').innerHTML =
+    listHTML(today.candidates.roberto_sanchez.top_queries);
+}
+
+// ── Cards ─────────────────────────────────────────────────────────────────────
+
+function renderCards(today) {
+  const k = today.candidates.keiko_fujimori;
+  const s = today.candidates.roberto_sanchez;
+
+  document.getElementById('keiko-mentions').textContent  = (k.mentions?.total || 0).toLocaleString('es-PE');
+  document.getElementById('sanchez-mentions').textContent = (s.mentions?.total || 0).toLocaleString('es-PE');
+  document.getElementById('keiko-trends').textContent    = k.trends_index || '—';
+  document.getElementById('sanchez-trends').textContent  = s.trends_index || '—';
+  document.getElementById('keiko-pos').textContent       = k.sentiment?.count ? k.sentiment.positive.toFixed(1) + '%' : '—';
+  document.getElementById('sanchez-pos').textContent     = s.sentiment?.count ? s.sentiment.positive.toFixed(1) + '%' : '—';
+
+  if (k.trends_series?.length) buildMiniChart('mini-keiko',   k.trends_series, KEIKO_COLOR);
+  if (s.trends_series?.length) buildMiniChart('mini-sanchez', s.trends_series, SANCHEZ_COLOR);
+}
+
+// ── Countdowns ────────────────────────────────────────────────────────────────
+
+function renderCountdowns() {
+  document.getElementById('countdown-debate').textContent   = daysUntil('2026-05-31');
+  document.getElementById('countdown-election').textContent = daysUntil('2026-06-07');
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+
+async function init() {
+  renderCountdowns();
+
+  // Carga días desde el 22 de mayo (primer día de datos)
+  const days = await loadAllDays('2026-05-22');
+
+  document.getElementById('loading').style.display = 'none';
+
+  if (!days.length) {
+    document.querySelector('main').innerHTML =
+      `<div style="padding:40px;font-family:'JetBrains Mono',monospace;color:var(--muted)">
+        No se encontraron datos. Asegúrate de que la carpeta data/ contiene archivos YYYY-MM-DD.json.
+      </div>`;
+    return;
+  }
+
+  const today = days[days.length - 1].data;
+
+  document.getElementById('last-update').textContent = 'Actualizado: ' + formatDate(today.date);
+  document.getElementById('footer-date').textContent = 'Datos al ' + formatDate(today.date);
+
+  renderCards(today);
+  buildTrendsChart(days);
+  buildMentionsChart(days);
+  renderSentiment(today);
+  renderQueries(today);
+}
+
+init();
+</script>
+</body>
+</html>
