@@ -3,23 +3,23 @@
   "candidates": {
     "keiko_fujimori": {
       "mentions": {
-        "youtube": 279,
+        "youtube": 14,
         "reddit": 0,
         "tiktok": 0,
-        "total": 279
+        "total": 14
       },
       "sentiment": {
-        "positive": 6.24,
-        "neutral": 24.65,
-        "negative": 69.11,
-        "count": 200
+        "positive": 20.26,
+        "neutral": 36.83,
+        "negative": 42.91,
+        "count": 14
       },
       "sentiment_by_source": {
         "youtube": {
-          "positive": 6.24,
-          "neutral": 24.65,
-          "negative": 69.11,
-          "count": 200
+          "positive": 20.26,
+          "neutral": 36.83,
+          "negative": 42.91,
+          "count": 14
         },
         "reddit": {
           "positive": 0.0,
@@ -34,39 +34,39 @@
           "count": 0
         }
       },
-      "trends_index": 38,
+      "trends_index": 57,
       "trends_series": [
-        57,
-        32,
-        47,
-        36,
-        40,
-        39,
-        60,
-        63,
-        41,
-        47,
-        34,
-        47,
-        53,
-        60,
-        41,
-        44,
-        31,
-        31,
-        25,
-        31,
-        32,
-        54,
-        46,
-        63,
-        62,
+        65,
+        33,
         52,
-        75,
-        100,
-        64,
+        35,
+        40,
+        38,
+        62,
+        60,
         47,
-        38
+        52,
+        40,
+        48,
+        54,
+        65,
+        40,
+        38,
+        32,
+        33,
+        27,
+        33,
+        35,
+        58,
+        48,
+        66,
+        65,
+        54,
+        77,
+        100,
+        68,
+        52,
+        57
       ],
       "trends_dates": [
         "2026-04-24",
@@ -104,37 +104,37 @@
       "top_queries": [
         "keiko fujimori 2026",
         "roberto sánchez",
+        "elecciones",
         "roberto sanchez",
-        "keiko fujimori edad",
-        "keiko fujimori propuestas"
+        "keiko fujimori edad"
       ],
       "rising_queries": [
-        "donde nació keiko fujimori",
-        "antauro humala",
+        "luis galarreta",
         "dina boluarte",
+        "estudios de keiko fujimori",
         "roberto sánchez",
-        "pedro castillo"
+        "antauro humala"
       ]
     },
     "roberto_sanchez": {
       "mentions": {
-        "youtube": 67,
+        "youtube": 94,
         "reddit": 0,
         "tiktok": 0,
-        "total": 67
+        "total": 94
       },
       "sentiment": {
-        "positive": 23.57,
-        "neutral": 31.82,
-        "negative": 44.62,
-        "count": 67
+        "positive": 28.97,
+        "neutral": 36.53,
+        "negative": 34.49,
+        "count": 94
       },
       "sentiment_by_source": {
         "youtube": {
-          "positive": 23.57,
-          "neutral": 31.82,
-          "negative": 44.62,
-          "count": 67
+          "positive": 28.97,
+          "neutral": 36.53,
+          "negative": 34.49,
+          "count": 94
         },
         "reddit": {
           "positive": 0.0,
@@ -149,39 +149,39 @@
           "count": 0
         }
       },
-      "trends_index": 40,
+      "trends_index": 53,
       "trends_series": [
-        36,
-        40,
-        34,
-        42,
-        60,
-        49,
-        36,
-        49,
-        43,
-        34,
-        29,
-        31,
-        16,
-        32,
-        20,
-        37,
-        26,
+        45,
         35,
-        55,
-        90,
-        41,
-        52,
-        43,
-        48,
-        61,
-        49,
+        33,
+        47,
+        59,
+        57,
+        37,
         46,
         42,
+        36,
+        27,
+        33,
+        18,
+        29,
+        20,
+        37,
+        27,
+        38,
+        57,
+        93,
+        44,
+        56,
+        45,
+        51,
+        63,
+        52,
+        50,
+        45,
+        50,
         47,
-        42,
-        40
+        53
       ],
       "trends_dates": [
         "2026-04-24",
@@ -220,10 +220,11 @@
         "keiko",
         "roberto sanchez peru",
         "roberto sanchez candidato",
-        "roberto sanchez palomino",
-        "jp"
+        "jp roberto sanchez",
+        "keiko fujimori"
       ],
       "rising_queries": [
+        "quien es el vicepresidente de roberto sanchez",
         "keiko",
         "keiko fujimori",
         "pedro sanchez"
