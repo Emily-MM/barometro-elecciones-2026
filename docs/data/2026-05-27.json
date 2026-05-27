@@ -3,23 +3,23 @@
   "candidates": {
     "keiko_fujimori": {
       "mentions": {
-        "youtube": 16,
+        "youtube": 48,
         "reddit": 0,
         "tiktok": 0,
-        "total": 16
+        "total": 48
       },
       "sentiment": {
-        "positive": 16.03,
-        "neutral": 30.48,
-        "negative": 53.49,
-        "count": 16
+        "positive": 9.74,
+        "neutral": 22.22,
+        "negative": 68.05,
+        "count": 48
       },
       "sentiment_by_source": {
         "youtube": {
-          "positive": 16.03,
-          "neutral": 30.48,
-          "negative": 53.49,
-          "count": 16
+          "positive": 9.74,
+          "neutral": 22.22,
+          "negative": 68.05,
+          "count": 48
         },
         "reddit": {
           "positive": 0.0,
@@ -34,39 +34,39 @@
           "count": 0
         }
       },
-      "trends_index": 0,
+      "trends_index": 72,
       "trends_series": [
-        29,
-        46,
-        40,
-        69,
-        58,
-        41,
-        47,
-        37,
-        46,
-        52,
-        63,
+        27,
+        45,
         39,
+        57,
+        56,
         39,
+        42,
         32,
-        29,
+        46,
+        49,
+        59,
+        38,
+        32,
+        36,
+        27,
+        31,
         30,
         32,
-        33,
-        54,
-        45,
-        62,
-        62,
         52,
-        74,
+        44,
+        60,
+        60,
+        49,
+        70,
         100,
-        64,
-        50,
-        61,
-        87,
         62,
-        0
+        48,
+        58,
+        84,
+        61,
+        72
       ],
       "trends_dates": [
         "2026-04-27",
@@ -105,36 +105,35 @@
         "keiko fujimori 2026",
         "roberto sánchez",
         "roberto sanchez",
-        "debate",
+        "alberto fujimori",
         "edad keiko fujimori"
       ],
       "rising_queries": [
-        "equipo de keiko fujimori",
-        "nadine heredia",
         "keiko fujimori en huancayo",
-        "pedro francke",
-        "rafael lópez-aliaga"
+        "roberto sánchez",
+        "cumpleaños de keiko fujimori",
+        "jp"
       ]
     },
     "roberto_sanchez": {
       "mentions": {
-        "youtube": 24,
+        "youtube": 203,
         "reddit": 0,
         "tiktok": 0,
-        "total": 24
+        "total": 203
       },
       "sentiment": {
-        "positive": 11.5,
-        "neutral": 23.28,
-        "negative": 65.22,
-        "count": 24
+        "positive": 9.93,
+        "neutral": 22.57,
+        "negative": 67.5,
+        "count": 200
       },
       "sentiment_by_source": {
         "youtube": {
-          "positive": 11.5,
-          "neutral": 23.28,
-          "negative": 65.22,
-          "count": 24
+          "positive": 9.93,
+          "neutral": 22.57,
+          "negative": 67.5,
+          "count": 200
         },
         "reddit": {
           "positive": 0.0,
@@ -149,39 +148,39 @@
           "count": 0
         }
       },
-      "trends_index": 0,
+      "trends_index": 70,
       "trends_series": [
-        49,
-        56,
-        52,
-        33,
-        43,
-        43,
-        37,
-        29,
-        28,
-        17,
-        27,
-        19,
-        37,
-        24,
-        31,
-        54,
-        89,
         41,
-        53,
-        42,
-        48,
-        61,
-        50,
-        47,
-        42,
-        47,
+        54,
         45,
-        56,
-        69,
-        51,
-        0
+        33,
+        44,
+        38,
+        33,
+        25,
+        29,
+        16,
+        29,
+        20,
+        34,
+        22,
+        31,
+        47,
+        89,
+        40,
+        50,
+        40,
+        45,
+        58,
+        47,
+        44,
+        40,
+        46,
+        43,
+        53,
+        65,
+        49,
+        70
       ],
       "trends_dates": [
         "2026-04-27",
@@ -218,17 +217,16 @@
       ],
       "top_queries": [
         "keiko",
-        "roberto sanchez candidato",
         "roberto sanchez peru",
-        "jp roberto sanchez",
-        "roberto sanchez jp"
+        "jp",
+        "roberto sanchez jp",
+        "keiko fujimori"
       ],
       "rising_queries": [
-        "equipo tecnico de roberto sanchez",
-        "pedro francke",
-        "renzo reggiardo",
-        "asesor espiritual de roberto sanchez",
-        "hermanas un amor compartido capítulo 71"
+        "keiko",
+        "antauro humala",
+        "keiko fujimori",
+        "pedro sanchez"
       ]
     }
   }
