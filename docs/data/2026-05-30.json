@@ -3,23 +3,23 @@
   "candidates": {
     "keiko_fujimori": {
       "mentions": {
-        "youtube": 13,
+        "youtube": 237,
         "reddit": 0,
         "tiktok": 0,
-        "total": 13
+        "total": 237
       },
       "sentiment": {
-        "positive": 12.9,
-        "neutral": 22.54,
-        "negative": 64.55,
-        "count": 13
+        "positive": 14.01,
+        "neutral": 29.08,
+        "negative": 56.91,
+        "count": 200
       },
       "sentiment_by_source": {
         "youtube": {
-          "positive": 12.9,
-          "neutral": 22.54,
-          "negative": 64.55,
-          "count": 13
+          "positive": 14.01,
+          "neutral": 29.08,
+          "negative": 56.91,
+          "count": 200
         },
         "reddit": {
           "positive": 0.0,
@@ -34,39 +34,39 @@
           "count": 0
         }
       },
-      "trends_index": 0,
+      "trends_index": 71,
       "trends_series": [
-        59,
-        58,
-        42,
-        39,
-        31,
-        42,
-        53,
-        63,
-        40,
-        36,
-        35,
-        32,
-        31,
-        37,
-        40,
-        62,
-        45,
-        62,
-        62,
-        51,
-        75,
-        100,
-        64,
-        49,
         60,
-        86,
-        65,
-        76,
-        69,
-        69,
-        0
+        60,
+        42,
+        40,
+        32,
+        43,
+        55,
+        64,
+        41,
+        36,
+        36,
+        33,
+        32,
+        38,
+        41,
+        63,
+        46,
+        64,
+        63,
+        52,
+        77,
+        100,
+        66,
+        51,
+        60,
+        88,
+        66,
+        90,
+        71,
+        73,
+        71
       ],
       "trends_dates": [
         "2026-04-30",
@@ -109,32 +109,32 @@
         "edad keiko fujimori"
       ],
       "rising_queries": [
-        "donde estudio keiko fujimori",
         "pedro francke",
+        "donde estudio keiko fujimori",
         "equipo técnico de keiko fujimori",
-        "rafael lópez-aliaga",
-        "roberto burneo"
+        "roberto burneo",
+        "debate presidencial 2026"
       ]
     },
     "roberto_sanchez": {
       "mentions": {
-        "youtube": 143,
+        "youtube": 111,
         "reddit": 0,
         "tiktok": 0,
-        "total": 143
+        "total": 111
       },
       "sentiment": {
-        "positive": 17.69,
-        "neutral": 29.45,
-        "negative": 52.86,
-        "count": 143
+        "positive": 19.38,
+        "neutral": 30.95,
+        "negative": 49.68,
+        "count": 111
       },
       "sentiment_by_source": {
         "youtube": {
-          "positive": 17.69,
-          "neutral": 29.45,
-          "negative": 52.86,
-          "count": 143
+          "positive": 19.38,
+          "neutral": 30.95,
+          "negative": 49.68,
+          "count": 111
         },
         "reddit": {
           "positive": 0.0,
@@ -149,39 +149,39 @@
           "count": 0
         }
       },
-      "trends_index": 64,
+      "trends_index": 53,
       "trends_series": [
-        36,
-        45,
-        45,
-        34,
-        27,
-        29,
-        16,
-        24,
-        22,
-        36,
-        21,
-        32,
-        55,
-        83,
-        43,
-        63,
-        42,
+        37,
         47,
-        60,
+        45,
+        35,
+        27,
+        30,
+        16,
+        25,
+        23,
+        37,
+        22,
+        33,
+        56,
+        85,
+        44,
+        64,
+        43,
+        49,
+        62,
+        50,
+        48,
+        43,
         48,
         46,
-        42,
-        47,
-        45,
         56,
-        69,
-        52,
-        65,
-        49,
-        49,
-        64
+        70,
+        54,
+        67,
+        50,
+        48,
+        53
       ],
       "trends_dates": [
         "2026-04-30",
@@ -221,14 +221,14 @@
         "roberto sanchez peru",
         "candidato roberto sanchez",
         "jp",
-        "jp roberto sanchez"
+        "roberto sanchez jp"
       ],
       "rising_queries": [
-        "equipo tecnico de roberto sanchez",
         "pedro francke",
+        "equipo tecnico de roberto sanchez",
+        "asesor espiritual de roberto sanchez",
         "anali marquez huanca",
-        "debate presidencial",
-        "keiko"
+        "debate presidencial"
       ]
     }
   }
