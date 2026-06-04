@@ -1,0 +1,239 @@
+{
+  "date": "2026-06-04",
+  "candidates": {
+    "keiko_fujimori": {
+      "mentions": {
+        "youtube": 15,
+        "reddit": 0,
+        "tiktok": 0,
+        "total": 15
+      },
+      "sentiment": {
+        "positive": 17.33,
+        "neutral": 38.15,
+        "negative": 44.52,
+        "count": 15
+      },
+      "sentiment_by_source": {
+        "youtube": {
+          "positive": 17.33,
+          "neutral": 38.15,
+          "negative": 44.52,
+          "count": 15
+        },
+        "reddit": {
+          "positive": 0.0,
+          "neutral": 0.0,
+          "negative": 0.0,
+          "count": 0
+        },
+        "tiktok": {
+          "positive": 0.0,
+          "neutral": 0.0,
+          "negative": 0.0,
+          "count": 0
+        }
+      },
+      "trends_index": 41,
+      "trends_series": [
+        10,
+        14,
+        16,
+        20,
+        13,
+        13,
+        12,
+        10,
+        11,
+        12,
+        12,
+        20,
+        15,
+        16,
+        22,
+        13,
+        29,
+        32,
+        21,
+        16,
+        20,
+        28,
+        21,
+        26,
+        22,
+        23,
+        21,
+        47,
+        90,
+        44,
+        32,
+        41
+      ],
+      "trends_dates": [
+        "2026-05-04",
+        "2026-05-05",
+        "2026-05-06",
+        "2026-05-07",
+        "2026-05-08",
+        "2026-05-09",
+        "2026-05-10",
+        "2026-05-11",
+        "2026-05-12",
+        "2026-05-13",
+        "2026-05-14",
+        "2026-05-15",
+        "2026-05-16",
+        "2026-05-17",
+        "2026-05-18",
+        "2026-05-19",
+        "2026-05-20",
+        "2026-05-21",
+        "2026-05-22",
+        "2026-05-23",
+        "2026-05-24",
+        "2026-05-25",
+        "2026-05-26",
+        "2026-05-27",
+        "2026-05-28",
+        "2026-05-29",
+        "2026-05-30",
+        "2026-05-31",
+        "2026-06-01",
+        "2026-06-02",
+        "2026-06-03",
+        "2026-06-04"
+      ],
+      "top_queries": [
+        "keiko fujimori 2026",
+        "roberto sánchez",
+        "keiko fujimori debate",
+        "roberto sanchez",
+        "keiko fujimori hoy"
+      ],
+      "rising_queries": [
+        "equipo tecnico de keiko fujimori",
+        "nadine heredia",
+        "keiko fujimori en huancayo",
+        "pedro francke",
+        "donde nació keiko fujimori"
+      ]
+    },
+    "roberto_sanchez": {
+      "mentions": {
+        "youtube": 52,
+        "reddit": 0,
+        "tiktok": 0,
+        "total": 52
+      },
+      "sentiment": {
+        "positive": 12.04,
+        "neutral": 27.87,
+        "negative": 60.09,
+        "count": 52
+      },
+      "sentiment_by_source": {
+        "youtube": {
+          "positive": 12.04,
+          "neutral": 27.87,
+          "negative": 60.09,
+          "count": 52
+        },
+        "reddit": {
+          "positive": 0.0,
+          "neutral": 0.0,
+          "negative": 0.0,
+          "count": 0
+        },
+        "tiktok": {
+          "positive": 0.0,
+          "neutral": 0.0,
+          "negative": 0.0,
+          "count": 0
+        }
+      },
+      "trends_index": 44,
+      "trends_series": [
+        8,
+        10,
+        5,
+        11,
+        5,
+        12,
+        8,
+        11,
+        16,
+        28,
+        14,
+        20,
+        13,
+        13,
+        17,
+        15,
+        17,
+        14,
+        15,
+        15,
+        18,
+        22,
+        17,
+        21,
+        16,
+        16,
+        16,
+        21,
+        100,
+        40,
+        34,
+        44
+      ],
+      "trends_dates": [
+        "2026-05-04",
+        "2026-05-05",
+        "2026-05-06",
+        "2026-05-07",
+        "2026-05-08",
+        "2026-05-09",
+        "2026-05-10",
+        "2026-05-11",
+        "2026-05-12",
+        "2026-05-13",
+        "2026-05-14",
+        "2026-05-15",
+        "2026-05-16",
+        "2026-05-17",
+        "2026-05-18",
+        "2026-05-19",
+        "2026-05-20",
+        "2026-05-21",
+        "2026-05-22",
+        "2026-05-23",
+        "2026-05-24",
+        "2026-05-25",
+        "2026-05-26",
+        "2026-05-27",
+        "2026-05-28",
+        "2026-05-29",
+        "2026-05-30",
+        "2026-05-31",
+        "2026-06-01",
+        "2026-06-02",
+        "2026-06-03",
+        "2026-06-04"
+      ],
+      "top_queries": [
+        "keiko",
+        "roberto sanchez peru",
+        "roberto sanchez candidato",
+        "keiko y roberto sanchez",
+        "keiko fujimori"
+      ],
+      "rising_queries": [
+        "claudia pinazzo",
+        "equipo tecnico de roberto sanchez",
+        "asesor espiritual de roberto sanchez",
+        "pedro francke",
+        "quien es la vicepresidenta de roberto sanchez"
+      ]
+    }
+  }
+}
