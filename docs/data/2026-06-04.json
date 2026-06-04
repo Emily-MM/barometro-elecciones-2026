@@ -3,23 +3,23 @@
   "candidates": {
     "keiko_fujimori": {
       "mentions": {
-        "youtube": 15,
+        "youtube": 109,
         "reddit": 0,
         "tiktok": 0,
-        "total": 15
+        "total": 109
       },
       "sentiment": {
-        "positive": 17.33,
-        "neutral": 38.15,
-        "negative": 44.52,
-        "count": 15
+        "positive": 14.42,
+        "neutral": 30.85,
+        "negative": 54.73,
+        "count": 109
       },
       "sentiment_by_source": {
         "youtube": {
-          "positive": 17.33,
-          "neutral": 38.15,
-          "negative": 44.52,
-          "count": 15
+          "positive": 14.42,
+          "neutral": 30.85,
+          "negative": 54.73,
+          "count": 109
         },
         "reddit": {
           "positive": 0.0,
@@ -37,11 +37,11 @@
       "trends_index": 41,
       "trends_series": [
         10,
-        14,
+        17,
         16,
         20,
         13,
-        13,
+        14,
         12,
         10,
         11,
@@ -49,24 +49,24 @@
         12,
         20,
         15,
-        16,
+        15,
         22,
         13,
-        29,
-        32,
+        28,
+        33,
         21,
         16,
         20,
-        28,
-        21,
-        26,
+        31,
         22,
+        26,
         23,
+        24,
         21,
-        47,
-        90,
-        44,
-        32,
+        48,
+        91,
+        45,
+        36,
         41
       ],
       "trends_dates": [
@@ -108,35 +108,35 @@
         "roberto sánchez",
         "keiko fujimori debate",
         "roberto sanchez",
-        "keiko fujimori hoy"
+        "keiko fujimori edad"
       ],
       "rising_queries": [
-        "equipo tecnico de keiko fujimori",
+        "debate presidencial 2026",
         "nadine heredia",
         "keiko fujimori en huancayo",
         "pedro francke",
-        "donde nació keiko fujimori"
+        "delia espinoza"
       ]
     },
     "roberto_sanchez": {
       "mentions": {
-        "youtube": 52,
+        "youtube": 202,
         "reddit": 0,
         "tiktok": 0,
-        "total": 52
+        "total": 202
       },
       "sentiment": {
-        "positive": 12.04,
-        "neutral": 27.87,
-        "negative": 60.09,
-        "count": 52
+        "positive": 12.8,
+        "neutral": 22.69,
+        "negative": 64.51,
+        "count": 200
       },
       "sentiment_by_source": {
         "youtube": {
-          "positive": 12.04,
-          "neutral": 27.87,
-          "negative": 60.09,
-          "count": 52
+          "positive": 12.8,
+          "neutral": 22.69,
+          "negative": 64.51,
+          "count": 200
         },
         "reddit": {
           "positive": 0.0,
@@ -151,7 +151,7 @@
           "count": 0
         }
       },
-      "trends_index": 44,
+      "trends_index": 36,
       "trends_series": [
         8,
         10,
@@ -161,30 +161,30 @@
         12,
         8,
         11,
-        16,
+        17,
         28,
-        14,
+        15,
         20,
         13,
-        13,
-        17,
-        15,
+        14,
+        18,
+        16,
         17,
         14,
-        15,
+        16,
         15,
         18,
+        23,
+        18,
         22,
+        16,
+        16,
         17,
-        21,
-        16,
-        16,
-        16,
-        21,
+        22,
         100,
-        40,
-        34,
-        44
+        42,
+        38,
+        36
       ],
       "trends_dates": [
         "2026-05-04",
@@ -229,8 +229,8 @@
       ],
       "rising_queries": [
         "claudia pinazzo",
-        "equipo tecnico de roberto sanchez",
         "asesor espiritual de roberto sanchez",
+        "equipo tecnico de roberto sanchez",
         "pedro francke",
         "quien es la vicepresidenta de roberto sanchez"
       ]
