@@ -1,0 +1,239 @@
+{
+  "date": "2026-06-09",
+  "candidates": {
+    "keiko_fujimori": {
+      "mentions": {
+        "youtube": 166,
+        "reddit": 0,
+        "tiktok": 0,
+        "total": 166
+      },
+      "sentiment": {
+        "positive": 17.65,
+        "neutral": 26.34,
+        "negative": 56.01,
+        "count": 166
+      },
+      "sentiment_by_source": {
+        "youtube": {
+          "positive": 17.65,
+          "neutral": 26.34,
+          "negative": 56.01,
+          "count": 166
+        },
+        "reddit": {
+          "positive": 0.0,
+          "neutral": 0.0,
+          "negative": 0.0,
+          "count": 0
+        },
+        "tiktok": {
+          "positive": 0.0,
+          "neutral": 0.0,
+          "negative": 0.0,
+          "count": 0
+        }
+      },
+      "trends_index": 64,
+      "trends_series": [
+        6,
+        5,
+        5,
+        5,
+        6,
+        5,
+        9,
+        7,
+        8,
+        10,
+        7,
+        13,
+        15,
+        8,
+        10,
+        11,
+        13,
+        10,
+        13,
+        11,
+        11,
+        10,
+        23,
+        43,
+        20,
+        19,
+        20,
+        29,
+        43,
+        100,
+        100,
+        64
+      ],
+      "trends_dates": [
+        "2026-05-09",
+        "2026-05-10",
+        "2026-05-11",
+        "2026-05-12",
+        "2026-05-13",
+        "2026-05-14",
+        "2026-05-15",
+        "2026-05-16",
+        "2026-05-17",
+        "2026-05-18",
+        "2026-05-19",
+        "2026-05-20",
+        "2026-05-21",
+        "2026-05-22",
+        "2026-05-23",
+        "2026-05-24",
+        "2026-05-25",
+        "2026-05-26",
+        "2026-05-27",
+        "2026-05-28",
+        "2026-05-29",
+        "2026-05-30",
+        "2026-05-31",
+        "2026-06-01",
+        "2026-06-02",
+        "2026-06-03",
+        "2026-06-04",
+        "2026-06-05",
+        "2026-06-06",
+        "2026-06-07",
+        "2026-06-08",
+        "2026-06-09"
+      ],
+      "top_queries": [
+        "keiko fujimori 2026",
+        "roberto sánchez",
+        "roberto sanchez",
+        "jp",
+        "keiko fujimori y roberto sánchez"
+      ],
+      "rising_queries": [
+        "quién ganó roberto sánchez o keiko fujimori",
+        "cuántos años tiene roberto sánchez",
+        "equipo técnico de keiko fujimori",
+        "equipo tecnico de keiko fujimori",
+        "fernando rospigliosi"
+      ]
+    },
+    "roberto_sanchez": {
+      "mentions": {
+        "youtube": 64,
+        "reddit": 0,
+        "tiktok": 0,
+        "total": 64
+      },
+      "sentiment": {
+        "positive": 21.49,
+        "neutral": 32.38,
+        "negative": 46.13,
+        "count": 64
+      },
+      "sentiment_by_source": {
+        "youtube": {
+          "positive": 21.49,
+          "neutral": 32.38,
+          "negative": 46.13,
+          "count": 64
+        },
+        "reddit": {
+          "positive": 0.0,
+          "neutral": 0.0,
+          "negative": 0.0,
+          "count": 0
+        },
+        "tiktok": {
+          "positive": 0.0,
+          "neutral": 0.0,
+          "negative": 0.0,
+          "count": 0
+        }
+      },
+      "trends_index": 53,
+      "trends_series": [
+        5,
+        5,
+        5,
+        8,
+        13,
+        7,
+        10,
+        6,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        5,
+        11,
+        9,
+        8,
+        10,
+        7,
+        8,
+        8,
+        10,
+        46,
+        20,
+        19,
+        19,
+        27,
+        26,
+        92,
+        88,
+        53
+      ],
+      "trends_dates": [
+        "2026-05-09",
+        "2026-05-10",
+        "2026-05-11",
+        "2026-05-12",
+        "2026-05-13",
+        "2026-05-14",
+        "2026-05-15",
+        "2026-05-16",
+        "2026-05-17",
+        "2026-05-18",
+        "2026-05-19",
+        "2026-05-20",
+        "2026-05-21",
+        "2026-05-22",
+        "2026-05-23",
+        "2026-05-24",
+        "2026-05-25",
+        "2026-05-26",
+        "2026-05-27",
+        "2026-05-28",
+        "2026-05-29",
+        "2026-05-30",
+        "2026-05-31",
+        "2026-06-01",
+        "2026-06-02",
+        "2026-06-03",
+        "2026-06-04",
+        "2026-06-05",
+        "2026-06-06",
+        "2026-06-07",
+        "2026-06-08",
+        "2026-06-09"
+      ],
+      "top_queries": [
+        "keiko",
+        "roberto sanchez peru",
+        "keiko fujimori",
+        "esposa de roberto sanchez",
+        "jp roberto sanchez"
+      ],
+      "rising_queries": [
+        "claudia pinazzo",
+        "sentencia roberto sanchez",
+        "esposa de roberto sanchez",
+        "cierre de campaña de roberto sanchez",
+        "cuantos años tiene roberto sanchez"
+      ]
+    }
+  }
+}
