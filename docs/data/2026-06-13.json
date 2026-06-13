@@ -3,23 +3,23 @@
   "candidates": {
     "keiko_fujimori": {
       "mentions": {
-        "youtube": 143,
+        "youtube": 187,
         "reddit": 0,
         "tiktok": 0,
-        "total": 143
+        "total": 187
       },
       "sentiment": {
-        "positive": 12.76,
-        "neutral": 33.84,
-        "negative": 53.4,
-        "count": 143
+        "positive": 9.59,
+        "neutral": 24.98,
+        "negative": 65.44,
+        "count": 187
       },
       "sentiment_by_source": {
         "youtube": {
-          "positive": 12.76,
-          "neutral": 33.84,
-          "negative": 53.4,
-          "count": 143
+          "positive": 9.59,
+          "neutral": 24.98,
+          "negative": 65.44,
+          "count": 187
         },
         "reddit": {
           "positive": 0.0,
@@ -34,40 +34,40 @@
           "count": 0
         }
       },
-      "trends_index": 37,
+      "trends_index": 36,
       "trends_series": [
         6,
-        5,
-        10,
+        6,
+        9,
         7,
         8,
-        9,
-        7,
+        11,
+        6,
         13,
-        14,
-        9,
+        15,
+        10,
         9,
         11,
+        12,
+        10,
+        9,
+        13,
         13,
         10,
-        10,
-        12,
-        12,
-        10,
         22,
-        43,
+        45,
         20,
         18,
-        21,
+        20,
         29,
-        43,
+        44,
         100,
-        98,
-        55,
-        41,
-        60,
-        33,
-        37
+        97,
+        57,
+        42,
+        58,
+        32,
+        36
       ],
       "trends_dates": [
         "2026-05-13",
@@ -104,39 +104,39 @@
         "2026-06-13"
       ],
       "top_queries": [
-        "keiko fujimori 2026",
         "roberto sánchez",
         "roberto sanchez",
         "jp",
-        "keiko fujimori y roberto sánchez"
+        "keiko fujimori y roberto sánchez",
+        "keiko fujimori hijas"
       ],
       "rising_queries": [
-        "donde vive keiko fujimori",
-        "que profesión tiene keiko fujimori",
-        "hiro fujimori",
-        "rafael lópez-aliaga",
-        "edad de roberto sánchez"
+        "quién ganó roberto sánchez o keiko fujimori",
+        "fecha de nacimiento de keiko fujimori",
+        "cuántos años tiene roberto sánchez",
+        "edad de roberto sánchez",
+        "quién es el nuevo presidente del perú"
       ]
     },
     "roberto_sanchez": {
       "mentions": {
-        "youtube": 42,
+        "youtube": 112,
         "reddit": 0,
         "tiktok": 0,
-        "total": 42
+        "total": 112
       },
       "sentiment": {
-        "positive": 13.32,
-        "neutral": 30.63,
-        "negative": 56.05,
-        "count": 42
+        "positive": 14.93,
+        "neutral": 28.91,
+        "negative": 56.16,
+        "count": 112
       },
       "sentiment_by_source": {
         "youtube": {
-          "positive": 13.32,
-          "neutral": 30.63,
-          "negative": 56.05,
-          "count": 42
+          "positive": 14.93,
+          "neutral": 28.91,
+          "negative": 56.16,
+          "count": 112
         },
         "reddit": {
           "positive": 0.0,
@@ -151,40 +151,40 @@
           "count": 0
         }
       },
-      "trends_index": 18,
+      "trends_index": 14,
       "trends_series": [
-        13,
+        11,
         6,
         10,
         6,
         7,
         9,
-        6,
+        7,
         8,
         7,
-        9,
+        8,
         5,
         11,
         9,
-        8,
+        7,
         8,
         8,
         9,
         8,
         10,
-        46,
+        47,
         20,
         19,
         21,
+        26,
         27,
-        27,
+        93,
         88,
-        88,
-        38,
-        25,
+        37,
         24,
-        15,
-        18
+        24,
+        16,
+        14
       ],
       "trends_dates": [
         "2026-05-13",
@@ -223,16 +223,16 @@
       "top_queries": [
         "keiko",
         "roberto sanchez peru",
-        "esposa roberto sanchez",
         "keiko fujimori",
+        "esposa roberto sanchez",
         "esposa de roberto sanchez"
       ],
       "rising_queries": [
-        "esposa de roberto sanchez edad",
-        "edad de esposa de roberto sanchez",
+        "claudia pinazzo",
         "sentencia roberto sanchez",
-        "edad de la esposa de roberto sanchez",
-        "cuantos hijos tiene roberto sanchez"
+        "familia de roberto sanchez",
+        "keiko fujimori edad",
+        "vicepresidenta de jp"
       ]
     }
   }
